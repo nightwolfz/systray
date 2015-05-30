@@ -6,6 +6,7 @@ package systray
 #cgo linux pkg-config: gtk+-3.0 appindicator3-0.1
 #cgo darwin CFLAGS: -DDARWIN -x objective-c -fobjc-arc
 #cgo darwin LDFLAGS: -framework Cocoa
+#cgo windows CFLAGS: -DWIN32
 
 #include "systray.h"
 */
@@ -52,6 +53,7 @@ func addOrUpdateMenuItem(item *MenuItem) {
 		checked = 1
 	}
 	C.add_or_update_menu_item(
+
 		C.int(item.id),
 		C.CString(item.title),
 		C.CString(item.tooltip),

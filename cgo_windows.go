@@ -8,7 +8,6 @@ package systray
 import "C"
 
 import (
-	"fmt"
 	"io/ioutil"
 	"syscall"
 	"unsafe"
@@ -98,7 +97,6 @@ func addOrUpdateMenuItem(item *MenuItem) {
 
 //export systray_ready
 func systray_ready() {
-	fmt.Println("systray reay")
 	systrayReady()
 }
 

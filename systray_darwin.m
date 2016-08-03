@@ -107,6 +107,7 @@
 - (void) quit
 {
   [[NSStatusBar systemStatusBar] removeStatusItem: statusItem];
+  // [NSApp terminate:self]; // this exits the whole application, which we don't want.
 }
 
 @end

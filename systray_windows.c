@@ -7,6 +7,7 @@
 
 // Message posted into message loop when Notification Icon is clicked
 #define WM_SYSTRAY_MESSAGE (WM_USER + 1)
+#define WM_DONE (WM_USER + 2)
 
 static NOTIFYICONDATA nid;
 static HWND hWnd;
@@ -151,6 +152,9 @@ int nativeLoop(void) {
     MSG msg;
     while (GetMessage(&msg, NULL, 0, 0)) {
         TranslateMessage(&msg);
+        if (msg.message == WM_DONE) {
+          return EXIT_SUCCESS;
+        };
         DispatchMessage(&msg);
     }
     return EXIT_SUCCESS;
@@ -210,6 +214,7 @@ void add_or_update_menu_item(int menuId, wchar_t* title, wchar_t* tooltip, short
 
 void quit() {
     Shell_NotifyIcon(NIM_DELETE, &nid);
+    PostMessage (hWnd, WM_DONE, 0,  0);
 }
 
 void setTitle(const wchar_t* ctitle) {

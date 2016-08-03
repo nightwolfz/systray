@@ -9,8 +9,6 @@ import (
 	"runtime"
 	"sync"
 	"sync/atomic"
-
-	"github.com/getlantern/golog"
 )
 
 // MenuItem is used to keep track each menu item of systray
@@ -32,8 +30,6 @@ type MenuItem struct {
 }
 
 var (
-	log = golog.LoggerFor("systray")
-
 	readyCh       = make(chan interface{})
 	clickedCh     = make(chan interface{})
 	menuItems     = make(map[int32]*MenuItem)

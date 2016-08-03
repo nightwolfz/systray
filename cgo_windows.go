@@ -9,6 +9,7 @@ import "C"
 
 import (
 	"io/ioutil"
+	"log"
 	"syscall"
 	"unsafe"
 )
@@ -24,20 +25,20 @@ func quit() {
 func SetIcon(iconBytes []byte) {
 	f, err := ioutil.TempFile("", "systray_temp_icon")
 	if err != nil {
-		log.Errorf("Unable to create temp icon: %v", err)
+		log.Printf("Unable to create temp icon: %v", err)
 		return
 	}
 	defer f.Close()
 	_, err = f.Write(iconBytes)
 	if err != nil {
-		log.Errorf("Unable to write icon to temp file %v: %v", f.Name(), f)
+		log.Printf("Unable to write icon to temp file %v: %v", f.Name(), f)
 		return
 	}
 	// Need to close file before we load it to make sure contents is flushed.
 	f.Close()
 	name, err := syscall.UTF16PtrFromString(f.Name())
 	if err != nil {
-		log.Errorf("Unable to convert name to string pointer: %v", err)
+		log.Printf("Unable to convert name to string pointer: %v", err)
 		return
 	}
 

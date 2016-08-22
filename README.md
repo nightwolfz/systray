@@ -4,8 +4,12 @@ notification area. Tested on Windows 8/10, Mac OSX 10.11 and Ubuntu 16.04.
 **This is a fork**
 
 This is a fork of https://github.com/getlantern/systray which focuses on cross
-compilation or mingw for windows instead of a precompiled windows dll file
-which is used in the upstream project.
+compilation or mingw directly in windows instead of a precompiled windows dll
+file which is used in the upstream project.
+
+Systray can be cross compiled for Windows (using http://www.mingw.org/ ) and
+OSX (using https://github.com/tpoechtrager/osxcross ) from ubuntu using or
+similar systems.
 
 
 ## Usage
